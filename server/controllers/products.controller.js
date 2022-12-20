@@ -13,19 +13,34 @@ export const getProducts = async (req, res) => {
 
 export const createProducts = async (req, res) => {
   try {
-    const { title, description, price, section } = req.body;
+    const { title, description, price, section,  } = req.body;
     let image;
 
-    if (req.files?.image) {
-      const result = await uploadImage(req.files.image.tempFilePath);
-      await fs.remove(req.files.image.tempFilePath);
-      image = {
-        url: result.secure_url,
-        public_id: result.public_id,
-      };
-    }
-    const newProduct = new Products({ title, description, price, section, image });
-    await newProduct.save();
+     if (req.files.image1) {
+      const images = Object.values(req.files)
+      for (let i = 0; i < images.length; i++) {
+        const result = await uploadImage(images[i].tempFilePath);
+        await fs.remove(images[i].tempFilePath);
+        !image
+          ? (image = [{ url: result.secure_url, public_id: result.public_id }])
+          : (image = [
+              ...image,
+              {
+                url: result.secure_url,
+                public_id: result.public_id,
+              },
+            ]);
+      }
+    } 
+    const newProduct = new Products({
+      title,
+      description,
+      price,
+      section,
+      image,
+    });
+ 
+     await newProduct.save(); 
     return res.json(newProduct);
   } catch (error) {
     console.log(error);
@@ -33,10 +48,11 @@ export const createProducts = async (req, res) => {
 };
 
 export const updateProduct = async (req, res) => {
+  const {title,description,price,section,image} = req.body
   try {
     const productUpdate = await Products.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      {title,description,price,section},
       {
         new: true,
       }
@@ -52,8 +68,10 @@ export const deleteProducts = async (req, res) => {
     const productRemove = await Products.findByIdAndRemove(req.params.id);
     if (!productRemove) return res.sendStatus(404);
 
-    if (productRemove.image.public_id) {
-      await deleteImage(productRemove.image.public_id);
+    if (productRemove.image[0].public_id) {
+      for (let i = 0; i < productRemove.image.length; i++) {
+        await deleteImage(productRemove.image[i].public_id);
+      }
     }
     return res.sendStatus(204);
   } catch (error) {

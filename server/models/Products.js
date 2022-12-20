@@ -18,10 +18,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     default: "inventario"
   },
-  image: {
+  image: [{
     url: String,
     public_id: String,
-  },
+  }],
 });
 
 export default mongoose.model("Product", productSchema);

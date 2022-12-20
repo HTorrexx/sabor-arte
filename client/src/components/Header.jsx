@@ -1,9 +1,9 @@
 import logo from "../assets/logo.png";
-import { BsSearch } from "react-icons/bs";
 import { TfiShoppingCart } from "react-icons/tfi";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import { Search } from "./Search";
 
 
 function Header() {
@@ -39,17 +39,7 @@ function Header() {
             <h1 className="title"><Link to="/">Sabor&Arte</Link></h1>
           </div>
         </div>
-        <div className="content-search">
-          <input
-            type="text"
-            name="search"
-            placeholder="Buscar en la Tienda"
-            className="input-search"
-          />
-          <button className="button-search">
-            <BsSearch />
-          </button>
-        </div>
+        <Search/>
         <div
           className="change-coin"
           onMouseOver={showListActive}

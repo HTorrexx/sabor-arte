@@ -49,6 +49,14 @@ body {
   cursor: pointer;
 }
 
+.content-search-and-result{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  
+}
+
 .content-search {
   display: flex;
   flex-direction: row;
@@ -60,7 +68,10 @@ body {
   background-color: var(--gradien-color);
   border-radius: 10px;
   border: 1px var(--border-color) solid;
+  outline: none;
 }
+
+
 .input-search::placeholder {
   padding: 1rem;
   color: var(--letter-color);
@@ -72,9 +83,50 @@ body {
   color: var(--letter-color);
   padding-top: 0.2rem;
   width: 2.5rem;
+  height: 2.5rem;
   border-radius: 10px;
   border: 1px var(--border-color) solid;
 }
+/* ESTE ES EL MODAL */
+
+.content-result{
+  background-color: blanchedalmond;
+  position: absolute;
+  top: 2.8rem;
+  width: 24.5rem ;
+  max-height: 350px;
+  overflow-y: scroll;
+  z-index: 200;
+}
+
+.result-search{
+  display: flex;
+  gap:0.5rem;
+  padding-top: 0.8rem;
+  cursor: pointer;
+}
+
+.result-search-image{
+  height: 60px;
+  width: 60px;
+}
+
+.result-search-info{
+  display: flex;
+  flex-direction: column;
+}
+
+.search-info-titulo{
+  font-size: 1.2rem;
+}
+
+.search-info-price{
+  font-weight: 400;
+}
+
+
+/* ESTO ES EL MODAL */
+
 
 .change-coin{
   position: relative;
@@ -201,6 +253,7 @@ li {
   width: 99%;
   height: 450px;
   margin-top: 50px;
+  gap: 50px;
 }
 
 .favorite-section h2{
@@ -217,14 +270,13 @@ li {
   height: 550px;
 }
 
-.content-favorite div{
+.content-favorite-div{
   border: 1px black solid;
   width:250px;
   height: 450px;
 }
 
 .favorite-image{
-width: 248px;
 height: 220px;
 }
 
@@ -239,7 +291,7 @@ height: 220px;
     align-items: center;
     width: 99%;
     height: 450px;
-    margin-top:7rem;
+    margin-top:20rem;
     gap: 20px;
 }
 
@@ -257,7 +309,7 @@ height: 220px;
   height: 600px;
 }
 
-.content-skills div{
+.content-skills-div{
   border: 1px black solid;
   width:350px;
   height: 500px;
@@ -342,6 +394,7 @@ margin-top: 4.5rem;
   width: 315px;
   height: 590px;
   border: 2px solid var(--border-color);
+  cursor: pointer;
 }
 
 .product-delete{
@@ -356,5 +409,64 @@ margin-top: 4.5rem;
   height: 314px;
 }
 
+
+                         /* PRODUCT VIEW */
+
+.content-title-view{
+  margin-top: 2rem;
+}
+
+.content-title-view h1{
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.content-product-view{
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.content-image-view{
+  background-color: var(--border-color);
+ 
+  width: 900px;
+  padding: 1rem;
+}
+
+.content-multi-image{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+
+}
+
+.multi-image{
+  height: 90px;
+  width: 180px;
+  cursor: pointer;
+}
+
+.content-info-product-view{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.decoration-2{
+  margin-top: 1rem;
+  border-top: 2px solid var(--border-color);
+  width: 98%;
+}
+
+.content-button-view button{
+  margin-right: 0.5rem;
+  background-color: var(--border-color);
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+  
 
 

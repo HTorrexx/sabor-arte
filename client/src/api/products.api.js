@@ -14,6 +14,7 @@ export const createProductsRequests = async (product, token) => {
   return await axios.post("http://localhost:4000/products", form, {
     headers: {
       "token": token,
+      "Content-Type": "multipart/form-data"
     },
   });
 };
@@ -44,6 +45,7 @@ export const updateProductRequest = async (id, newFields, token) => {
   return await axios.put(`http://localhost:4000/products/${id}`, form, {
     headers: {
       "token": token,
+      "Content-Type": "multipart/form-data"
     },
   });
 };
